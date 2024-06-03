@@ -1,0 +1,20 @@
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Введите IP-адрес: ");
+        String input = scanner.nextLine();
+        boolean result = input.matches("\\b((1?\\d?\\d|2[0-4]\\d|25[0-5])\\.){3}(25[0-5]|2[0-4]\\d|1?\\d?\\d)\\b");
+        if (result) {
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter("ip_address.txt"))) {
+                writer.write(input);
+                System.out.println("IP-адрес записан в файл");
+            } catch (IOException e) {
+                System.out.println("Ошибка"); 
+            }
+
+        }
+        else{
+            System.out.println("Неправильный IP-адрес");
+        }
+    }
+}
